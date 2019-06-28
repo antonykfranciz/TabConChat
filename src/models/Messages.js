@@ -3,6 +3,7 @@ module.exports = (mongoose) => {
         type: { type: String, default: 'text', required: true },
         chatId: { type: String, required: true },
         message: { type: String, required: true },
+        owner: { type: String, required: true }
     }, {
             timestamps: true
         }

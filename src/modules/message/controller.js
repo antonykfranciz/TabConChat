@@ -14,7 +14,7 @@ const createMessage = async (socket, io, data, callback) => {
     try {
         let chatId = data.chatId;
         let chat = await getOneChat(chatId);
-        let message = await Messages.create({ chatId: chatId, message: data.message });
+        let message = await Messages.create({ chatId: chatId, message: data.message, owner:socket.userId });
         let socketIds = getSocketToSend(chat);
         socketIds.map(socketId => {
             io.to(socketId).emit('new_message', response(true, 'New message', message));
