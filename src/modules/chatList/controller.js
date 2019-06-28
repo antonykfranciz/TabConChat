@@ -19,7 +19,7 @@ const getChatLists = async (socket, callback) => {
 
 const createAChatList = async (socket, data, callback) => {
     try {
-        let chatList = await createChatList(data.sender, data.receiver);
+        let chatList = await createChatList(socket.userId, data.receiver);
         return callback(response(true, 'Chat create success', chatList));
     } catch (error) {
         return callback(response(false, 'Chat create create Failed', {}));
